@@ -6,9 +6,13 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 06:46:08 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/03/31 09:22:50 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/02 13:20:12 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+t_philo	*new_philo(void)
+{
+	return (NULL);
+}

@@ -6,16 +6,16 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 06:46:47 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/03/31 11:05:55 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/02 13:23:36 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO
-#define PHILO
-	#include <unistd.h>
-	#include <stdlib.h>
-	#include <stdio.h>
-	#include <limits.h>
+#ifndef PHILO_H
+# define PHILO_H
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 
 typedef struct	t_context
 {
