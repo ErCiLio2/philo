@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 09:47:13 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/07 19:52:14 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/08 02:25:40 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_valid_arg(char *arg)
 {
 	long int	num;
 	char		*aux;
-	
+
 	if (!arg || !*arg)
 		return (0);
 	aux = arg;
@@ -60,4 +60,20 @@ int	ft_atoi(char *str)
 		str++;
 	}
 	return (nbr * signal);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	if (!s1 && !s2)
+		return (0);
+	if (!s1)
+		return (0 - *s2);
+	if (!s2)
+		return (*s1 - 0);
+	while ((*s1 && *s2) && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
 }
