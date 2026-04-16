@@ -6,11 +6,11 @@
 #    By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/31 09:32:22 by eteixeir          #+#    #+#              #
-#    Updated: 2026/04/16 09:37:31 by eteixeir         ###   ########.fr        #
+#    Updated: 2026/04/16 23:08:23 by eteixeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=philo
+NAME	=	philo
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
