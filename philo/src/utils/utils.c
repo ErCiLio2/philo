@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 09:47:13 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/08 02:25:40 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/16 23:30:47 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,13 @@ int	is_digit(unsigned char c)
 
 int	is_valid_arg(char *arg)
 {
-	long int	num;
-	char		*aux;
-
 	if (!arg || !*arg)
 		return (0);
-	aux = arg;
 	while (*arg)
 	{
 		if (!is_digit(*arg++))
 			return (0);
 	}
-	num = ft_atoi(arg);
-	if (num >= INT_MAX || num <= INT_MIN || num < 0)
-		return (0);
 	return (1);
 }
 
@@ -54,12 +47,10 @@ int	ft_atoi(char *str)
 	nbr = 0;
 	while (*str && is_digit(*str))
 	{
-		if (nbr > INT_MAX)
-			return (signal * INT_MAX);
 		nbr = (nbr * 10) + *str - '0';
 		str++;
 	}
-	return (nbr * signal);
+	return ((int)nbr * signal);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

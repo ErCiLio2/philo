@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 06:46:47 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/08 03:02:11 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/17 00:49:08 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,7 @@ void		print_error_invalid_arg(void);
 void		init_philos_and_forks(t_context *data);
 void		mutex_init(t_context *data);
 long long	get_time(void);
+int			get_simulation_status(t_context *data);
+void		print_status(t_philo *philo, char *msg);
+void		set_simulation_stop(t_context *data);
 #endif
