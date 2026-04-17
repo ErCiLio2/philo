@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 19:37:45 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/08 02:59:09 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/17 10:41:55 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	clear_data(t_context *data)
 	if (data->forks)
 	{
 		i = -1;
-		while (++i < data->number_of_philosophers)
+		while (++i < data->num_philos)
 			pthread_mutex_destroy(&data->forks[i]);
 		free(data->forks);
 	}
