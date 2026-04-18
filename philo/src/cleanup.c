@@ -6,22 +6,23 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:07:50 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 16:24:14 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:11:45 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	cleanup(t_table *t)
+void	cleanup(t_table *table)
 {
 	int	i;
 	
-	pthread_mutex_destroy(&t->lock);
-	pthread_mutex_destroy(&t->write);
-	pthread_mutex_destroy(&t->start);
+	pthread_mutex_destroy(&table->meal_lock);
+	pthread_mutex_destroy(&table->write);
 	i = -1;
-	while (++i < t->n_philo)
-		pthread_mutex_destroy(&t->forks[i]);
-	free(t->forks);
-	free(t->philos);
+	while (++i < table->n_philo)
+		pthread_mutex_destroy(&table->forks[i]);
+	if (table->forks)
+		free(table->forks);
+	if (table->philos)
+		free(table->philos);
 }
