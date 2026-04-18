@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 15:02:24 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 15:41:47 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 12:33:04 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/18 16:03:02 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
-
-int	main(int ac, char **av)
+int	is_digit(int c)
 {
-	t_table	*table;
-	
-	if (ac < 5  || ac > 6)
-		printf("Erro: use: ./philo n t_die t_eat t_sleep [must_eat]");
-	table = init_data(ac, av+1);
-	if (!table)
+	if (c >= '0' && c <= '9')
 		return (1);
-	
 	return (0);
+}
+
+int	is_num(char *s)
+{
+	if (!s)
+		return (0);
+	while (*s)
+	{
+		if (!is_digit(*s++))
+			return (0);
+	}
+	return (1);
+}
+
+int	ft_atoi(char *s)
+{
+	long	nbr;
+
+	if (!s)
+		return (0);
+	nbr = 0;
+	while (is_digit(*s))
+		nbr = nbr * 10 + (*s++ - '0');
+	return ((long)nbr);
 }

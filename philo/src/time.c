@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error_invalid_arg.c                          :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 02:57:42 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/13 08:53:28 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 13:27:23 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/18 13:42:40 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "../philo.h"
 
-void	print_error_invalid_arg(void)
+long	get_time(void)
 {
-	printf("Erro: ");
-	printf("Use ./philo [n_philos] [die] [eat] [sleep] [optional: n_eat]\n");
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec / 1000) + (tv.tv_usec / 1000));
+}
+
+void	ft_usleep(long time)
+{
+	long	start;
+
+	start = get_time();
+	while (1)
+	{
+		if ((get_time() - start) >= time)
+			return ;
+	}
 }

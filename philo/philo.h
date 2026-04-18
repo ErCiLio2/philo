@@ -5,60 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/28 06:46:47 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/17 12:59:48 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 12:40:57 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/18 16:23:53 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-# include <unistd.h>
-# include <stdlib.h>
 # include <stdio.h>
-# include <limits.h>
-# include <pthread.h>
+# include <stdlib.h>
+# include <unistd.h>
 # include <sys/time.h>
+# include <pthread.h>
 
-typedef struct s_philo	t_philo;
-typedef struct t_context
-{
-	long long		start_time;
-	int				num_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				must_eat;
-	int				simulation_stop;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	meal_lock;
-	pthread_mutex_t	stop_lock;
-	pthread_mutex_t	start_lock;
-	pthread_mutex_t	write_lock;
-	t_philo			*philos;
-}					t_context;
+typedef struct s_table	t_table;
+
 typedef struct s_philo
 {
 	int				id;
-	int				meals_eaten;
-	long long		last_meal_time;
-	pthread_t		thread;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
-	t_context		*data;
-}					t_philo;
-int			ft_atoi(char *str);
-int			ft_strcmp(const char *s1, const char *s2);
-int			is_valid_arg(char *arg);
-void		clear_data(t_context *data);
-int			philo_eat(t_philo *philo);
-void		*philo_routine(void *arg);
-void		*monitor_routine(t_context *data);
-void		ft_usleep(long long time_in_ms, t_context *data);
-void		print_error_invalid_arg(void);
-void		init_philos_and_forks(t_context *data);
-int			mutex_init(t_context *data);
-long long	get_time(void);
-int			get_simulation_status(t_context *data);
-void		print_status(t_philo *philo, char *msg);
-void		set_simulation_status(t_context *data);
+	int				meals;
+	int				last_meal;
+	pthread_mutex_t	*left;
+	pthread_mutex_t	*rigt;
+	t_table	*table;
+}	t_philo;
+
+typedef struct s_table
+{
+	int				n_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				must_eat;
+	pthread_mutex_t lock;
+	pthread_mutex_t	start;
+	pthread_mutex_t	write;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
+}	t_table;
+int		is_num(char *s);
+int		ft_atoi(char *s);
+int		parse(int ac, char **av, t_table *t);
+void	cleanup(t_table *t);
+t_table	*init_data(int ac, char **av);
 #endif

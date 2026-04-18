@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 15:02:24 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 15:41:47 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 15:05:00 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/18 16:04:38 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	main(int ac, char **av)
+t_table	*init_data(int ac, char **av)
 {
-	t_table	*table;
+	t_table	*t;
 	
-	if (ac < 5  || ac > 6)
-		printf("Erro: use: ./philo n t_die t_eat t_sleep [must_eat]");
-	table = init_data(ac, av+1);
-	if (!table)
-		return (1);
-	
-	return (0);
+	t = malloc(sizeof(t_table *));
+	if (!t)
+		return (NULL);
+	if (!parse(ac, av, t))
+		return (printf("Error: Invalid arguments!"), free(t), NULL);
+	printf ("Total: %d Morrer: %d Comer: %d Dormir: %d Refeicoes: %d\n",
+		t->n_philo, t->t_die, t->t_eat, t->t_sleep, t->must_eat);
+	return (t);
 }
