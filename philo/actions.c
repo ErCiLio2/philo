@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:07:48 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 17:14:51 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:27:27 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	take_forks(t_philo *philo)
 	if (philo->table->n_philo == 1)
 	{
 		pthread_mutex_lock(philo->l_fork);
-		print_state(philo, "has taken a fork");
+		print_state(philo, "has taken a lefhtfork");
 		ft_usleep(philo->table->t_die, philo->table);
 		pthread_mutex_unlock(philo->l_fork);
 		return ;
@@ -25,21 +25,22 @@ static void	take_forks(t_philo *philo)
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->r_fork);
-		print_state(philo, "has taken a fork");
+		print_state(philo, "has taken a right fork");
 		pthread_mutex_lock(philo->l_fork);
+		print_state(philo, "has taken a left fork");
 	}
 	else
 	{
 		pthread_mutex_lock(philo->l_fork);
-		print_state(philo, "has taken a fork");
+		print_state(philo, "has taken a left fork");
 		pthread_mutex_lock(philo->r_fork);
+		print_state(philo, "has taken a right fork");
 	}
 }
 
 void	take_eat(t_philo *philo)
 {
 	take_forks(philo);
-	print_state(philo, "has taken a fork");
 	print_state(philo, "is eating");
 	pthread_mutex_lock(&philo->table->meal_lock);
 	philo->last_meal = get_time();
