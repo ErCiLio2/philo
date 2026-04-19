@@ -6,16 +6,16 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:52:57 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 16:59:55 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:11:12 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-
 int	simulation_finished(t_table *table)
 {
 	int	res;
+
 	pthread_mutex_lock(&table->meal_lock);
 	res = table->stop;
 	pthread_mutex_unlock(&table->meal_lock);
@@ -24,7 +24,7 @@ int	simulation_finished(t_table *table)
 
 static int	check_death(t_table *table)
 {
-	int	i;
+	int		i;
 	long	time_since_meal;
 
 	i = -1;
@@ -36,9 +36,8 @@ static int	check_death(t_table *table)
 		{
 			table->stop = 1;
 			pthread_mutex_unlock(&table->meal_lock);
-			// Print da morte fora do lock para evitar deadlock, 
-			// mas print_state tem seu próprio lock.
-			printf("%ld %d %s\n", timestamp(table), table->philos[i].id, "died");
+			printf("%ld %d %s\n",
+				timestamp(table), table->philos[i].id, "died");
 			return (1);
 		}
 		pthread_mutex_unlock(&table->meal_lock);

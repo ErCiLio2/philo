@@ -6,13 +6,13 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:05:00 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 16:59:14 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:12:25 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-void init_forks(t_table *table)
+void	init_forks(t_table *table)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void init_forks(t_table *table)
 		pthread_mutex_init(&table->forks[i], NULL);
 }
 
-void init_philos(t_table *table)
+void	init_philos(t_table *table)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void init_philos(t_table *table)
 	}
 }
 
-void init_mutex_table(t_table *table)
+void	init_mutex_table(t_table *table)
 {
 	pthread_mutex_init(&table->write, NULL);
 	pthread_mutex_init(&table->lock, NULL);
@@ -71,7 +71,7 @@ int	init_table(t_table *table, int ac, char **av)
 void	init_simalation(t_table *t)
 {
 	int	i;
-	
+
 	i = -1;
 	while (++i < t->n_philo)
 		pthread_create(&t->philos[i].thread, NULL, routine, &t->philos[i]);

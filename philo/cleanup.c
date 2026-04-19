@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:07:50 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 16:58:36 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:12:34 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	cleanup(t_table *table)
 {
 	int	i;
-	
+
 	pthread_mutex_destroy(&table->meal_lock);
 	pthread_mutex_destroy(&table->write);
 	pthread_mutex_destroy(&table->lock);

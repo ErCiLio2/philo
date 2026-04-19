@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:06:50 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 17:00:07 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:09:29 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	parse(int ac, char **av, t_table *t)
 {
 	int		i;
-	
+
 	i = -1;
 	while (++i < ac - 1)
 	{

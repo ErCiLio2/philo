@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 13:27:23 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 17:01:21 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:08:18 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ void	ft_usleep(long time, t_table *table)
 	long	start;
 
 	start = get_time();
-	// Enquanto o tempo não passar E a simulação não parar
 	while ((get_time() - start) < time)
 	{
-		// Se alguém morreu, para de dormir imediatamente
 		pthread_mutex_lock(&table->meal_lock);
 		if (table->stop)
 		{
@@ -41,8 +39,6 @@ void	ft_usleep(long time, t_table *table)
 			break ;
 		}
 		pthread_mutex_unlock(&table->meal_lock);
-		
-		// Dorme um pouquinho (500 microsegundos) para soltar a CPU
-		usleep(500); 
+		usleep(500);
 	}
 }
