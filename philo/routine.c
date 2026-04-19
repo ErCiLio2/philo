@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error_invalid_arg.c                          :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 02:57:42 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/13 08:53:28 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 16:26:01 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 17:07:52 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "./philo.h"
 
-void	print_error_invalid_arg(void)
+void	*routine(void *arg)
 {
-	printf("Erro: ");
-	printf("Use ./philo [n_philos] [die] [eat] [sleep] [optional: n_eat]\n");
+	t_philo	*p;
+
+	p = (t_philo *)arg;
+	if (p->id % 2 == 0)
+		ft_usleep(p->table->t_eat, p->table);
+	while (!simulation_finished(p->table))
+	{
+		take_eat(p);
+		take_sleep(p);
+		take_think(p);
+	}
+	return (NULL);
 }

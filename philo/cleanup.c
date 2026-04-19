@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_data.c                                       :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 19:37:45 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/08 02:59:09 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 16:07:50 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 17:12:34 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "./philo.h"
 
-void	clear_data(t_context *data)
+void	cleanup(t_table *table)
 {
 	int	i;
 
-	if (!data)
-		return ;
-	if (data->forks)
-	{
-		i = -1;
-		while (++i < data->number_of_philosophers)
-			pthread_mutex_destroy(&data->forks[i]);
-		free(data->forks);
-	}
-	if (data->philos)
-		free(data->philos);
-	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->meal_lock);
-	pthread_mutex_destroy(&data->stop_lock);
-	free(data);
+	pthread_mutex_destroy(&table->meal_lock);
+	pthread_mutex_destroy(&table->write);
+	pthread_mutex_destroy(&table->lock);
+	pthread_mutex_destroy(&table->start);
+	i = -1;
+	while (++i < table->n_philo)
+		pthread_mutex_destroy(&table->forks[i]);
+	if (table->forks)
+		free(table->forks);
+	if (table->philos)
+		free(table->philos);
 }

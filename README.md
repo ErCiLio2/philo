@@ -77,8 +77,20 @@ Example with meal limit:
 ## Example Output
 
 ```
-0 1 has taken a fork
-0 1 has taken a fork
+0 1 has taken a left fork
+0 1 has take0 1 has taken a left fork
+0 1 h0 1 has taken a left fork
+0 1 has take0 1 has taken a left fork
+0 1 has taken a right fork
+0 1 is eating
+200 1 is sleeping
+400 1 is thinkingn a right fork
+0 1 is eating
+200 1 is sleeping
+400 1 is thinkingas taken a right fork
+0 1 is eating
+200 1 is sleeping
+400 1 is thinkingn a right fork
 0 1 is eating
 200 1 is sleeping
 400 1 is thinking

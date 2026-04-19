@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 22:57:13 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/08 02:23:04 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 15:02:24 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 17:11:44 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "./philo.h"
 
-long long	get_time(void)
+int	main(int ac, char **av)
 {
-	struct timeval	tv;
+	t_table	table;
 
-	if (gettimeofday(&tv, NULL) == -1)
-		return (0);
-	return ((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL));
-}
-
-void	ft_usleep(long long time_in_ms)
-{
-	long long	start_time;
-
-	start_time = get_time();
-	while ((get_time() - start_time) < time_in_ms)
-		usleep(500);
+	if (ac < 5 || ac > 6)
+	{
+		printf("Erro: use: ./philo n t_die t_eat t_sleep [must_eat]");
+		return (1);
+	}
+	table.stop = 0;
+	if (!init_table(&table, ac, av + 1))
+		return (1);
+	init_simalation(&table);
+	cleanup(&table);
+	return (0);
 }
