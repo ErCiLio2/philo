@@ -6,7 +6,7 @@
 #    By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/31 09:32:22 by eteixeir          #+#    #+#              #
-#    Updated: 2026/04/18 18:52:44 by eteixeir         ###   ########.fr        #
+#    Updated: 2026/04/19 16:59:40 by eteixeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,9 @@ NAME	=	philo
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRC		= 	src/main.c src/init.c\
-			src/parse.c src/time.c\
-			src/ft_atoi.c src/cleanup.c\
-			src/routine.c src/mutex.c\
-			src/actions.c src/print.c\
-			src/monitor.c
+SRC		= 	 ./main.c  ./init.c ./parse.c  ./time.c\
+			 ./ft_atoi.c  ./cleanup.c ./routine.c  ./mutex.c\
+			 ./actions.c  ./print.c ./monitor.c
 
 OBJ		=	$(SRC:.c=.o)
 

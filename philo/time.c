@@ -6,11 +6,11 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 13:27:23 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 20:11:45 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:01:21 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "./philo.h"
 
 long	get_time(void)
 {

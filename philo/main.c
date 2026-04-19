@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 16:26:01 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 20:04:51 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 15:02:24 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 16:59:24 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "./philo.h"
 
-void	*routine(void *arg)
+int	main(int ac, char **av)
 {
-	t_philo	*p;
-
-	p = (t_philo *)arg;
-	if (p->id % 2 == 0)
-		ft_usleep(1000, p->table);
-	while (!simulation_finished(p->table))
+	t_table	table;
+	
+	if (ac < 5  || ac > 6)
 	{
-		take_eat(p);
-		take_sleep(p);
-		take_think(p);
+		printf("Erro: use: ./philo n t_die t_eat t_sleep [must_eat]");
+		return (1);
 	}
-	return (NULL);
+	table.stop = 0;
+	if (!init_table(&table, ac, av + 1))
+		return (1);
+	init_simalation(&table);
+	cleanup(&table);
+	return (0);
 }
-

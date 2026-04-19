@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 18:21:16 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 20:11:45 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 15:06:50 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 17:00:07 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "./philo.h"
 
-void print_state(t_philo *philo, char *str)
+int	parse(int ac, char **av, t_table *t)
 {
-    pthread_mutex_lock(&philo->table->meal_lock);
-    if (!philo->table->stop) // Só imprime se ninguém morreu
-        printf("%ld %d %s\n", timestamp(philo->table), philo->id, str);
-    pthread_mutex_unlock(&philo->table->meal_lock);
+	int		i;
+	
+	i = -1;
+	while (++i < ac - 1)
+	{
+		if (!is_num(av[i]))
+			return (0);
+	}
+	t->n_philo = ft_atoi(av[0]);
+	if (t->n_philo == 0)
+		return (0);
+	t->t_die = ft_atoi(av[1]);
+	t->t_eat = ft_atoi(av[2]);
+	t->t_sleep = ft_atoi(av[3]);
+	if (ac == 6)
+		t->must_eat = ft_atoi(av[4]);
+	else
+		t->must_eat = -1;
+	return (1);
 }

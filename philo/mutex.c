@@ -1,28 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   mutex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 16:07:50 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/18 20:11:45 by eteixeir         ###   ########.fr       */
+/*   Created: 2026/04/18 16:26:26 by eteixeir          #+#    #+#             */
+/*   Updated: 2026/04/19 16:49:29 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
 
-void	cleanup(t_table *table)
-{
-	int	i;
-	
-	pthread_mutex_destroy(&table->meal_lock);
-	pthread_mutex_destroy(&table->write);
-	i = -1;
-	while (++i < table->n_philo)
-		pthread_mutex_destroy(&table->forks[i]);
-	if (table->forks)
-		free(table->forks);
-	if (table->philos)
-		free(table->philos);
-}
+#include "./philo.h"
