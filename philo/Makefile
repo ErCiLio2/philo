@@ -6,7 +6,7 @@
 #    By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/31 09:32:22 by eteixeir          #+#    #+#              #
-#    Updated: 2026/04/19 16:59:40 by eteixeir         ###   ########.fr        #
+#    Updated: 2026/04/19 17:17:21 by eteixeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 
 SRC		= 	 ./main.c  ./init.c ./parse.c  ./time.c\
-			 ./ft_atoi.c  ./cleanup.c ./routine.c  ./mutex.c\
+			 ./ft_atoi.c  ./cleanup.c ./routine.c\
 			 ./actions.c  ./print.c ./monitor.c
 
 OBJ		=	$(SRC:.c=.o)
