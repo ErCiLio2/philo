@@ -161,7 +161,6 @@ Each line follows the format:
 
 ### Articles & Tutorials
 - Dijkstra, E.W. (1971). *Hierarchical ordering of sequential processes*. Acta Informatica, 1(2), 115–138.
-- [Codecademy — Introduction to Threads](https://www.codecademy.com/article/introduction-to-threads)
 - [Beej's Guide to C Programming — Threads](https://beej.us/guide/bgc/html/split/multithreading.html)
 
 ### AI Usage
