@@ -6,7 +6,7 @@
 /*   By: eteixeir <eteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:07:48 by eteixeir          #+#    #+#             */
-/*   Updated: 2026/04/19 17:27:27 by eteixeir         ###   ########.fr       */
+/*   Updated: 2026/04/21 13:08:06 by eteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,18 @@ void	take_sleep(t_philo *philo)
 
 void	take_think(t_philo *philo)
 {
+	long	think_time;
+
 	print_state(philo, "is thinking");
+	if (philo->table->n_philo % 2 == 1 || philo->table->t_sleep == 0)
+	{
+		think_time = philo->table->t_eat * 2 - philo->table->t_sleep;
+		if (think_time < 1)
+			think_time = 1;
+		if (think_time > philo->table->t_die - philo->table->t_eat)
+			think_time = philo->table->t_die - philo->table->t_eat;
+		if (think_time < 1)
+			think_time = 1;
+		ft_usleep(think_time, philo->table);
+	}
 }
